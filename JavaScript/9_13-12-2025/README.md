@@ -1,87 +1,103 @@
-## Toto úložiště bylo vytvořeno pro nácvik zpracování událostí JS. Připravené značky a připojené soubory skriptů pro každý úkol. Zkopírujte je do svého projektu.
+Этот репозиторий создан для практики обработки событий в JavaScript.
+Для каждого задания подготовлена разметка и подключённые файлы скриптов. Скопируйте их в свой проект.
 
-# Úkol 1
-Počítadlo se skládá z rozpětí a tlačítek, které by po kliknutí měly zvýšit a snížit svou hodnotu o jednu.
+ЗАДАНИЕ 1
+Счётчик состоит из span и кнопок, которые при клике должны увеличивать или уменьшать значение на единицу.
 
-```html
+HTML:
+
 <div id="counter">
    <button type="button" data-action="decrement">-1</button>
    <span id="value">0</span>
    <button type="button" data-action="increment">+1</button>
 </div>
-```
-Vytvořte proměnnou counterValue, která bude ukládat aktuální hodnotu čítače a inicializuje ji na 0.
-K tlačítkům přidejte posluchače kliknutí, uvnitř kterých zvyšujete nebo snižujete hodnotu čítače.
-Aktualizujte rozhraní novou hodnotou proměnné counterValue.
 
-# Úkol 2
-Napište skript, který změní barvy pozadí prvku ```<body>``` pomocí vloženého stylu při kliknutí na ```button.change-color``` a vydá hodnotu barvy do ```span.color```.
+Создайте переменную counterValue, которая будет хранить текущее значение счётчика и инициализируйте её значением 0.
+Добавьте обработчики клика на кнопки, внутри которых увеличивайте или уменьшайте значение счётчика.
+Обновляйте интерфейс новым значением переменной counterValue.
 
-# Úkol 3
-Napište skript, který při psaní textu do input#name-input (vstupní událost) nahradí jeho aktuální hodnotu v span#name-output. Pokud je vstup prázdný, měl by se v rozsahu zobrazit řetězec „Anonymní“.
-```html
-<input type="text" id="name-input" placeholder="Zadejte prosím své jméno" />
-<h1>Dobrý den, <span id="name-output">Anonymní</span>!</h1>
-```
-# Úkol 4
-Napište skript, který při ztrátě fokusu na vstupu (událost rozmazání) zkontroluje jeho obsah na správný počet zadaných znaků.
-```html
+ЗАДАНИЕ 2
+Напишите скрипт, который будет изменять цвет фона элемента <body> с помощью встроенного стиля при клике на кнопку button.change-color и выводить значение цвета в span.color.
+
+ЗАДАНИЕ 3
+Напишите скрипт, который при вводе текста в input#name-input (событие input) будет подставлять его текущее значение в span#name-output.
+Если поле ввода пустое, в span должна отображаться строка «Анонимный».
+
+HTML:
+<input type="text" id="name-input" placeholder="Пожалуйста, введите своё имя" />
+
+<h1>Здравствуйте, <span id="name-output">Анонимный</span>!</h1>
+
+ЗАДАНИЕ 4
+Напишите скрипт, который при потере фокуса полем ввода (событие blur) проверяет количество введённых символов.
+
+HTML:
 <input
    type="text"
    id="validation-input"
    data-length="6"
-   placeholder="Zadejte prosím 6 symbolů"
+   placeholder="Пожалуйста, введите 6 символов"
 />
-```
-Kolik znaků by mělo být ve vstupu, je uvedeno v atributu data-length.
-Pokud je zadán správný počet znaků, vstupní hranice se změní na zelenou, pokud je nesprávná, zčervená.
-Pro přidání stylů použijte CSS třídy valid a invalid, které jsme již přidali do zdrojových souborů úlohy.
-```html
+
+Количество символов указано в атрибуте data-length.
+Если введено правильное количество символов — рамка инпута становится зелёной, если нет — красной.
+Для добавления стилей используйте CSS-классы valid и invalid.
+
+CSS:
 #validation-input {
-   ohraničení: 3px solid #bdbdbd;
+border: 3px solid #bdbdbd;
 }
 
 #validation-input.valid {
-   border-color: #4caf50;
+border-color: #4caf50;
 }
 
 #validation-input.invalid {
-   barva ohraničení: #f44336;
+border-color: #f44336;
 }
-```
-# Úkol 5
-Napište skript, který bude reagovat na změny hodnoty input#font-size-control (událost vstupu) a změní vložený styl span#text aktualizací vlastnosti font-size. V důsledku toho přetažením posuvníku změníte velikost textu.
-```html
+
+ЗАДАНИЕ 5
+Напишите скрипт, который будет реагировать на изменение значения input#font-size-control (событие input) и менять встроенный стиль span#text, обновляя свойство font-size.
+В результате, перетаскивая ползунок, вы будете изменять размер текста.
+
+HTML:
 <input id="font-size-control" type="range" min="16" max="96" />
 <br />
-<span id="text">Abrakadabra!</span>
-```
-# Úkol 6
-Napište skript pro správu přihlašovacího formuláře.
-```html
+<span id="text">Абракадабра!</span>
+
+ЗАДАНИЕ 6
+Напишите скрипт для управления формой входа.
+
+HTML:
+
 <form class="login-form">
-   <štítek>
-     E-mailem
+   <label>
+     Email
      <input type="email" name="email" />
    </label>
-   <štítek>
-     Heslo
+   <label>
+     Пароль
      <input type="password" name="password" />
    </label>
-   <button type="submit">Přihlášení</button>
+   <button type="submit">Войти</button>
 </form>
-```
-Zpracování formuláře odeslání formuláře.login-form by mělo být na události odeslání.
-Při odeslání formuláře by se stránka neměla znovu načítat.
-Pokud má formulář prázdná pole, zobrazí se upozornění, že musí být vyplněna všechna pole.
-Pokud uživatel vyplnil všechna pole a odeslal formulář, shromážděte hodnoty polí do objektu, kde název pole bude názvem vlastnosti a hodnota pole bude hodnotou vlastnosti. Pro přístup k prvkům formuláře použijte vlastnost elements.
-Zobrazte objekt se zadanými daty v konzole a vymažte hodnoty polí formuláře pomocí metody reset.
 
-## Používání
-Chcete-li použít toto úložiště, postupujte takto:
-1. Naklonujte úložiště do místního počítače;
-2. Přejděte do adresáře úložiště;
-3. Spusťte každou úlohu podle pokynů popsaných v příslušném souboru úlohy.
+Обработка отправки формы login-form должна происходить по событию submit.
+При отправке формы страница не должна перезагружаться.
+Если в форме есть пустые поля — выведите предупреждение, что все поля должны быть заполнены.
+Если пользователь заполнил все поля и отправил форму:
+— соберите значения полей в объект (имя поля = имя свойства);
+— используйте свойство elements для доступа к полям формы;
+— выведите объект в консоль;
+— очистите форму методом reset.
 
-## Autor
-Toto úložiště vytvořil a spravuje [Oleksii Shevchenko](https://shevchenkool.github.io/portfolio/). Dotazy, návrhy a zpětnou vazbu lze směřovat na [email](uzlabini@gmail.com) or [linkedin profile](linkedin.com/in/oleksii-shevchenko-535ab61b8).
+ИСПОЛЬЗОВАНИЕ
+
+1. Склонируйте репозиторий на локальный компьютер.
+2. Перейдите в каталог репозитория.
+3. Выполняйте задания согласно инструкциям в соответствующих файлах.
+
+АВТОР
+Репозиторий создан и поддерживается Oleksii Shevchenko.
+Email: uzlabini@gmail.com
+LinkedIn: linkedin.com/in/oleksii-shevchenko-535ab61b8
